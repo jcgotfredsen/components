@@ -1,13 +1,8 @@
 name: Spectrum Components
 on:
-  release:
-   types: [created]
-   workflow_dispatch:
-    inputs:
-     project_name:
-     description: 'spectrum'
-     required: true
-     type: string
+ push:
+  branches:
+   - main
 jobs:
  build:
   permissions: write-all
@@ -23,7 +18,7 @@ jobs:
    - name: Install dependencies
      run: npm ci
    - name: Build Angular Project
-     run: ng build ${{ github.event.inputs.project_name }}
+     run: ng build spectrum
    - name: Upload Artifacts
      uses: actions/upload-artifact@v3
      with:
@@ -66,10 +61,10 @@ jobs:
      run: ls -R dist
    - name: Changing Directory
      run: |
-       cd dist/${{ github.event.inputs.project_name }}
+       cd dist/spectrum
    - name: Publish To Github
      run: |
-       cd dist/${{ github.event.inputs.project_name }}
+       cd dist/spectrum
        npm config set //npm.pkg.github.com/:_authToken ${{ secrets.GITHUB_TOKEN }}
        npm publish --access public
      env:
