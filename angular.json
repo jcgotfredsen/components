@@ -7,7 +7,7 @@
       "projectType": "library",
       "root": "projects/spectrum",
       "sourceRoot": "projects/spectrum/src",
-      "prefix": "lib",
+      "prefix": "spec",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
@@ -40,12 +40,39 @@
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "scss"
+          "style": "scss",
+          "skipTests": true,
+          "standalone": true,
+          "changeDetection": "OnPush"
+        },
+        "@schematics/angular:class": {
+          "skipTests": true
+        },
+        "@schematics/angular:directive": {
+          "standalone": true,
+          "skipTests": true
+        },
+        "@schematics/angular:guard": {
+          "skipTests": true
+        },
+        "@schematics/angular:interceptor": {
+          "skipTests": true
+        },
+        "@schematics/angular:pipe": {
+          "standalone": true,
+          "skipTests": true
+        },
+        "@schematics/angular:service": {
+          "skipTests": true
+        },
+        "@schematics/angular:application": {
+          "standalone": true,
+          "strict": true
         }
       },
       "root": "projects/dev-app",
       "sourceRoot": "projects/dev-app/src",
-      "prefix": "app",
+      "prefix": "dev",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:application",

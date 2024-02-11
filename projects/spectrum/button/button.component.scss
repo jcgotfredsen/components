@@ -1,0 +1,405 @@
+:host {
+  display: block;
+}
+
+.button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  appearance: none;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  font-weight: 600;
+  cursor: pointer;
+  user-select: none;
+  outline: none;
+  text-align: left;
+  text-decoration: none;
+  transition: background 200ms cubic-bezier(0, 0, 1, 1);
+  position: relative;
+  white-space: nowrap;
+
+  &:disabled {
+    cursor: default;
+  }
+
+  &__content {
+    .material-symbols-outlined {
+      vertical-align: middle;
+      line-height: 0;
+    }
+  }
+
+  &__spinner {
+    position: absolute;
+    border: 2px solid rgb(255, 255, 255);
+    border-top-color: rgb(39, 110, 241);
+    border-radius: 50%;
+    opacity: 0;
+    animation: spin 700ms linear infinite;
+  }
+
+  &--block {
+    width: 100%;
+  }
+
+  &--loading {
+    cursor: default;
+
+    .button__content {
+      opacity: 0;
+    }
+
+    .button__spinner {
+      opacity: 1;
+    }
+  }
+
+  &--dark {
+    .button__spinner {
+      border-color: rgb(203, 203, 203);
+      border-top-color: rgb(51, 51, 51);
+    }
+  }
+
+  &--primary {
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+
+    &:hover {
+      background-color: rgb(51, 51, 51);
+    }
+
+    &:active {
+      background-color: rgb(84, 84, 84);
+    }
+
+    &:disabled {
+      background-color: rgb(246, 246, 246);
+      color: rgb(175, 175, 175);
+    }
+
+    &.button--selected {
+      background-color: rgb(84, 84, 84);
+
+      &:disabled {
+        background-color: rgb(255, 255, 255);
+        color: rgb(107, 107, 107);
+      }
+
+      &.button--dark {
+        background-color: rgb(226, 226, 226);
+
+        &:hover {
+          background-color: rgb(238, 238, 238);
+        }
+
+        &:active {
+          background-color: rgb(226, 226, 226);
+        }
+
+        &:disabled {
+          background-color: rgb(175, 175, 175);
+          color: rgb(107, 107, 107);
+        }
+      }
+    }
+
+    // &.button--negative {
+    //   color: rgb(233, 128, 122);
+    // }
+
+    &.button--dark {
+      background-color: rgb(226, 226, 226);
+      color: rgb(0, 0, 0);
+
+      &.button--negative {
+        color: rgb(215, 44, 13);
+      }
+
+      &:disabled {
+        background-color: rgb(41, 41, 41);
+        color: rgb(107, 107, 107);
+      }
+    }
+  }
+
+  &--secondary {
+    background-color: rgb(238, 238, 238);
+    color: rgb(0, 0, 0);
+
+    &:hover {
+      background-color: rgb(226, 226, 226);
+    }
+
+    &:active {
+      background-color: rgb(203, 203, 203);
+    }
+
+    &:disabled {
+      background-color: rgb(246, 246, 246);
+      color: rgb(175, 175, 175);
+    }
+
+    &.button--selected {
+      background-color: rgb(0, 0, 0);
+      color: rgb(255, 255, 255);
+
+      &:hover {
+        background-color: rgb(255, 255, 255);
+      }
+
+      &:active {
+        background-color: rgb(255, 255, 255);
+      }
+
+      &:disabled {
+        background-color: rgb(255, 255, 255);
+        color: rgb(107, 107, 107);
+      }
+
+      &.button--dark {
+        background-color: rgb(226, 226, 226);
+        color: rgb(0, 0, 0);
+
+        &:hover {
+          background-color: rgb(255, 255, 255);
+        }
+
+        &:active {
+          background-color: rgb(255, 255, 255);
+        }
+
+        &:disabled {
+          background-color: rgb(175, 175, 175);
+          color: rgb(107, 107, 107);
+        }
+      }
+    }
+
+    &.button--positive {
+      color: rgb(4, 136, 72);
+    }
+
+    &.button--negative {
+      color: rgb(215, 44, 13);
+    }
+
+    &.button--dark {
+      background-color: rgb(51, 51, 51);
+      color: rgb(255, 255, 255);
+
+      &:hover {
+        background-color: rgb(84, 84, 84);
+      }
+
+      &:active {
+        background-color: rgb(107, 107, 107);
+      }
+
+      &:disabled {
+        background-color: rgb(41, 41, 41);
+        color: rgb(107, 107, 107);
+      }
+
+      &.button--positive {
+        color: rgb(6, 193, 103);
+      }
+
+      &.button--negative {
+        color: rgb(233, 128, 122);
+      }
+    }
+  }
+
+  &--tertiary {
+    background-color: transparent;
+
+    &:hover {
+      background-color: rgb(246, 246, 246);
+    }
+
+    &:active {
+      background-color: rgb(238, 238, 238);
+    }
+
+    &.button--selected {
+      background-color: rgb(238, 238, 238);
+
+      &:disabled {
+        color: rgb(175, 175, 175);
+      }
+
+      &.button--dark {
+        background-color: rgb(84, 84, 84);
+
+        &:disabled {
+          background-color: rgb(51, 51, 51);
+          color: rgb(107, 107, 107);
+        }
+      }
+    }
+
+    &.button--negative {
+      color: rgb(215, 44, 13);
+    }
+
+    &.button--inverse {
+      color: rgb(255, 255, 255);
+    }
+
+    &.button--dark {
+      color: rgb(175, 175, 175);
+
+      &:hover {
+        background-color: rgb(51, 51, 51);
+      }
+
+      &:active {
+        background-color: rgb(84, 84, 84);
+      }
+
+      &:disabled {
+        color: rgb(107, 107, 107);
+      }
+
+      &.button--negative {
+        color: rgb(233, 128, 122);
+      }
+    }
+  }
+
+  &--mini {
+    padding: 6px 8px;
+    font-size: 12px;
+    line-height: 16px;
+    border-radius: 4px;
+
+    .material-symbols-outlined {
+      font-size: 16px;
+    }
+
+    .button__spinner {
+      width: 12px;
+      height: 12px;
+    }
+
+    &.button--pill {
+      border-radius: 38px;
+    }
+
+    &.button--circle,
+    &.button--square {
+      width: 28px;
+      height: 28px;
+      padding: 0;
+    }
+
+    &.button--circle {
+      border-radius: 50%;
+    }
+  }
+
+  &--compact {
+    padding: 10px 12px;
+    font-size: 14px;
+    line-height: 16px;
+    border-radius: 8px;
+
+    .material-symbols-outlined {
+      font-size: 18px;
+    }
+
+    .button__spinner {
+      width: 12px;
+      height: 12px;
+    }
+
+    &.button--pill {
+      border-radius: 30px;
+    }
+
+    &.button--circle,
+    &.button--square {
+      width: 36px;
+      height: 36px;
+      padding: 0;
+    }
+
+    &.button--circle {
+      border-radius: 50%;
+    }
+  }
+
+  &--default {
+    padding: 14px 16px;
+    font-size: 16px;
+    line-height: 20px;
+    border-radius: 8px;
+
+    .material-symbols-outlined {
+      font-size: 24px;
+    }
+
+    .button__spinner {
+      width: 14px;
+      height: 14px;
+    }
+
+    &.button--pill {
+      border-radius: 38px;
+    }
+
+    &.button--circle,
+    &.button--square {
+      width: 48px;
+      height: 48px;
+      padding: 0;
+    }
+
+    &.button--circle {
+      border-radius: 50%;
+    }
+  }
+
+  &--large {
+    padding: 16px 20px;
+    font-size: 18px;
+    line-height: 24px;
+    border-radius: 8px;
+
+    .material-symbols-outlined {
+      font-size: 28px;
+    }
+
+    .button__spinner {
+      width: 16px;
+      height: 16px;
+    }
+
+    &.button--pill {
+      border-radius: 42px;
+    }
+
+    &.button--circle,
+    &.button--square {
+      width: 56px;
+      height: 56px;
+      padding: 0;
+    }
+
+    &.button--circle {
+      border-radius: 50%;
+    }
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

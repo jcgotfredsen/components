@@ -1,13 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { DevAppLayoutComponent } from './dev-app/dev-app-layout.component';
 
 @Component({
-  selector: 'app-root',
+  selector: 'dev-app',
   standalone: true,
-  imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  imports: [
+    RouterOutlet,
+    DevAppLayoutComponent,
+  ],
+  template: '<dev-app-layout><router-outlet></router-outlet></dev-app-layout>',
+  encapsulation: ViewEncapsulation.None,
 })
 export class AppComponent {
-  title = 'dev-app';
+
 }

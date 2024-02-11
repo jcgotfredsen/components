@@ -1,0 +1,58 @@
+<!-- '[class.buttonGroup__Item]': 'inGroup',
+'[class.button--fullWidth]': 'fullWidth', -->
+
+@if (routerLink) {
+<a class="button button--{{kind}} button--{{color}} button--{{size}} button--{{shape}} button--{{color}}"
+  [class.button--block]="block" [class.button--loading]="loading" [class.button--selected]="selected"
+  [routerLink]="routerLink" [attr.aria-label]="label" [attr.disabled]="disabled || loading">
+  <span class="button__content">
+    @if (icon) {
+    <span class="material-symbols-outlined" aria-hidden="true">
+      {{ icon }}
+    </span>
+    }
+    <ng-container [ngTemplateOutlet]="contentTemplateRef"></ng-container>
+  </span>
+
+  <div class="button__spinner"></div>
+</a>
+}
+
+@if (url) {
+<a class="button button--{{kind}} button--{{color}} button--{{size}} button--{{shape}} button--{{color}}"
+  [class.button--block]="block" [class.button--loading]="loading" [class.button--selected]="selected" [href]=" url"
+  [attr.aria-label]="label" [attr.disabled]="disabled || loading" target="_blank">
+  <span class="button__content">
+    @if (icon) {
+    <span class="material-symbols-outlined" aria-hidden="true">
+      {{ icon }}
+    </span>
+    }
+    <ng-container [ngTemplateOutlet]="contentTemplateRef"></ng-container>
+  </span>
+
+  <div class="button__spinner"></div>
+</a>
+}
+
+@if (!routerLink && !url) {
+<button [type]="type"
+  class="button button--{{kind}} button--{{color}} button--{{size}} button--{{shape}} button--{{color}}"
+  [class.button--block]="block" [class.button--loading]="loading" [class.button--selected]="selected"
+  (click)="action.emit()" [disabled]="disabled || loading" [attr.aria-label]="label">
+  <span class="button__content">
+    @if (icon) {
+    <span class="material-symbols-outlined" aria-hidden="true">
+      {{ icon }}
+    </span>
+    }
+    <ng-container [ngTemplateOutlet]="contentTemplateRef"></ng-container>
+  </span>
+
+  <div class="button__spinner"></div>
+</button>
+}
+
+<ng-template #contentTemplateRef>
+  <ng-content></ng-content>
+</ng-template>

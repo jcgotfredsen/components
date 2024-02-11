@@ -1,0 +1,54 @@
+<div class="sidebar">
+  @for (navItem of navItems; track navItem) {
+  <a routerLinkActive #routerLinkActiveInstance="routerLinkActive"
+    [attr.tabindex]="routerLinkActiveInstance.isActive ? 0 : -1" [routerLink]="[navItem.route]">
+    {{ navItem.name }}
+  </a>
+  }
+</div>
+
+<main class="demo-main" [ngClass]="getDensityClass()">
+
+  <div class="toolbar">
+    <!-- <button (click)="navigation.open('mouse')">
+      <mat-icon>menu</mat-icon>
+    </button> -->
+    <div class="demo-toolbar">
+      <h1>Spectrum Components</h1>
+      <div class="demo-config-buttons">
+        <button (click)="toggleFullscreen()" title="Toggle fullscreen">
+          <span class="material-symbols-rounded">fullscreen</span>
+        </button>
+        <button (click)="toggleAnimations()" [title]="state.animations ? 'Disable animations' : 'Enable animations'">
+          @if (state.animations) {
+          <span class="material-symbols-rounded">pause_circle</span>
+          } @else {
+          <span class="material-symbols-rounded">animation</span>
+          }
+        </button>
+        <button (click)="toggleTheme()" [title]="state.darkTheme ? 'Switch to light theme' : 'Switch to dark theme'">
+          @if (state.darkTheme) {
+          <span class="material-symbols-rounded">light_mode</span>
+          } @else {
+          <span class="material-symbols-rounded">dark_mode</span>
+          }
+        </button>
+        <button (click)="toggleStrongFocus()"
+          [title]="state.strongFocusEnabled ? 'Disable strong focus' : 'Enable strong focus'">
+          @if (state.strongFocusEnabled) {
+          <span class="material-symbols-rounded">not_accessible</span>
+          } @else {
+          <span class="material-symbols-rounded">accessibility</span>
+          }
+        </button>
+        <button (click)="toggleDensity()" [title]="'Density: ' + state.density">
+          <span class="material-symbols-rounded">grid_on</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="demo-content" [ngClass]="getDensityClass()">
+    <ng-content></ng-content>
+  </div>
+</main>

@@ -18,11 +18,13 @@
             "regexp": "bundle generation complete"
           }
         }
-      }
+      },
+      "dependsOn":["Components"],
+      "label": "App"
     },
     {
       "type": "npm",
-      "script": "test",
+      "script": "dev-components",
       "isBackground": true,
       "problemMatcher": {
         "owner": "typescript",
@@ -33,10 +35,11 @@
             "regexp": "(.*?)"
           },
           "endsPattern": {
-            "regexp": "bundle generation complete"
+            "regexp": "Compilation complete"
           }
         }
-      }
-    }
+      },
+      "label": "Components"
+    },
   ]
 }

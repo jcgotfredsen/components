@@ -1,9 +1,29 @@
 {
-  "name": "spectrum",
+  "name": "@spectrum/components",
   "version": "0.0.1",
+  "description": "Spectrum Components",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jcgotfredsen/components.git"
+  },
+  "keywords": [
+    "angular",
+    "components"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jcgotfredsen/components/issues"
+  },
+  "homepage": "https://github.com/jcgotfredsen/components#readme",
+  "exports": {
+    ".": {
+      "sass": "./index.scss"
+    }
+  },
   "peerDependencies": {
     "@angular/common": "^17.1.0",
-    "@angular/core": "^17.1.0"
+    "@angular/core": "^17.1.0",
+    "@angular/cdk": "^17.1.0"
   },
   "dependencies": {
     "tslib": "^2.3.0"
