@@ -1,4 +1,4 @@
-name: Angular Package
+name: Spectrum Components
 on:
   release:
    types: [created]
