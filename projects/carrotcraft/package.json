@@ -1,5 +1,5 @@
 {
-  "name": "@carrotcraft/components",
+  "name": "@jcgotfredsen/components",
   "version": "0.0.1",
   "description": "Carrot Craft Components",
   "repository": {
@@ -27,9 +27,6 @@
   },
   "dependencies": {
     "tslib": "^2.3.0"
-  },
-  "publishConfig": {
-    "@jcgotfredsen:registry": "https://npm.pkg.github.com"
   },
   "sideEffects": false
 }
