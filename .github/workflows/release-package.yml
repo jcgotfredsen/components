@@ -38,6 +38,7 @@ jobs:
         with:
           node-version: 20
           registry-url: https://npm.pkg.github.com/
+          scope: '@carrotcraft'
       - name: Configure npm registry for GitHub Packages
         run: npm config set registry https://npm.pkg.github.com/
       - name: Download Artifacts
