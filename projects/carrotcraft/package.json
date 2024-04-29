@@ -28,5 +28,8 @@
   "dependencies": {
     "tslib": "^2.3.0"
   },
+  "publishConfig": {
+    "@jcgotfredsen:registry": "https://npm.pkg.github.com"
+  },
   "sideEffects": false
 }
