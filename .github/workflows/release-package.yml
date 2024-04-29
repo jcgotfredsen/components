@@ -54,6 +54,6 @@ jobs:
       - name: Publish To Github
         run: |
           cd dist/carrotcraft
-          npm publish
+          npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
