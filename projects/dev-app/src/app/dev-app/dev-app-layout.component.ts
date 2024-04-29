@@ -1,7 +1,7 @@
 import { CommonModule, DOCUMENT } from '@angular/common';
 import { ChangeDetectionStrategy, Component, ElementRef, Inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { ButtonComponent } from '@spectrum/components/button';
+import { ButtonComponent } from '@carrotcraft/components/button';
 import { getAppState, setAppState } from './dev-app-state';
 
 @Component({

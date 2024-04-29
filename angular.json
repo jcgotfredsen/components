@@ -3,23 +3,23 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "spectrum": {
+    "carrotcraft": {
       "projectType": "library",
-      "root": "projects/spectrum",
-      "sourceRoot": "projects/spectrum/src",
+      "root": "projects/carrotcraft",
+      "sourceRoot": "projects/carrotcraft/src",
       "prefix": "spec",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
-            "project": "projects/spectrum/ng-package.json"
+            "project": "projects/carrotcraft/ng-package.json"
           },
           "configurations": {
             "production": {
-              "tsConfig": "projects/spectrum/tsconfig.lib.prod.json"
+              "tsConfig": "projects/carrotcraft/tsconfig.lib.prod.json"
             },
             "development": {
-              "tsConfig": "projects/spectrum/tsconfig.lib.json"
+              "tsConfig": "projects/carrotcraft/tsconfig.lib.json"
             }
           },
           "defaultConfiguration": "production"
@@ -27,7 +27,7 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "tsConfig": "projects/spectrum/tsconfig.spec.json",
+            "tsConfig": "projects/carrotcraft/tsconfig.spec.json",
             "polyfills": [
               "zone.js",
               "zone.js/testing"

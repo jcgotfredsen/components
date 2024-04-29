@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { ButtonComponent } from '@spectrum/components/button';
+import { ButtonComponent } from '@carrotcraft/components/button';
 
 @Component({
   selector: 'dev-app-404',

@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { InputComponent } from '@spectrum/components/input';
+import { InputComponent } from '@carrotcraft/components/input';
 
 @Component({
   selector: 'dev-input-demo',
