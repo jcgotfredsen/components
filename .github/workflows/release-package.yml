@@ -1,71 +1,72 @@
 name: Spectrum Components
 on:
- push:
-  branches:
-   - main
+  push:
+    branches:
+      - main
 jobs:
- build:
-  permissions: write-all
-  runs-on: ubuntu-latest
-  steps:
-   - uses: actions/checkout@v3
-   - uses: actions/setup-node@v3
-     with:
-      node-version: 20
-      registry-url: https://npm.pkg.github.com/
-   - name: Install Angular CLI
-     run: npm install -g @angular/cli
-   - name: Install dependencies
-     run: npm ci
-   - name: Build Angular Project
-     run: ng build spectrum
-   - name: Upload Artifacts
-     uses: actions/upload-artifact@v3
-     with:
-      name: build-artifacts
-      path: dist/
- debug:
-  needs: build
-  permissions: write-all
-  runs-on: ubuntu-latest
-  steps:
-   - name: Download Artifacts
-     uses: actions/download-artifact@v3
-     with:
-       name: build-artifacts
-       path: dist
-   - name: List Files in dist
-     run: ls -R dist
-   - name: Print Current Directory
-     run: pwd
- publish:
-  needs: build
-  permissions: write-all
-  runs-on: ubuntu-latest
-  steps:
-   - name: Checkout code
-     uses: actions/checkout@v2
-   - name: Set up Node.js
-     uses: actions/setup-node@v2
-     with:
-       node-version: 20
-       registry-url: https://npm.pkg.github.com/
-   - name: Configure npm registry for GitHub Packages
-     run: npm config set registry https://npm.pkg.github.com/
-   - name: Download Artifacts
-     uses: actions/download-artifact@v3
-     with:
-       name: build-artifacts
-       path: dist
-   - name: List Files in dist
-     run: ls -R dist
-   - name: Changing Directory
-     run: |
-       cd dist/spectrum
-   - name: Publish To Github
-     run: |
-       cd dist/spectrum
-       npm config set //npm.pkg.github.com/:_authToken ${{ secrets.GITHUB_TOKEN }}
-       npm publish --access public
-     env:
-       NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  build:
+    permissions: write-all
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 20
+          registry-url: https://npm.pkg.github.com/
+      - name: Install Angular CLI
+        run: npm install -g @angular/cli
+      - name: Install dependencies
+        run: npm ci
+      - name: Build Angular Project
+        run: ng build spectrum
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-artifacts
+          path: dist/
+  debug:
+    needs: build
+    permissions: write-all
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download Artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: build-artifacts
+          path: dist
+      - name: List Files in dist
+        run: ls -R dist
+      - name: Print Current Directory
+        run: pwd
+  publish:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: read
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: https://npm.pkg.github.com/
+      - name: Configure npm registry for GitHub Packages
+        run: npm config set registry https://npm.pkg.github.com/
+      - name: Download Artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: build-artifacts
+          path: dist
+      - name: List Files in dist
+        run: ls -R dist
+      - name: Changing Directory
+        run: |
+          cd dist/spectrum
+      - name: Publish To Github
+        run: |
+          cd dist/spectrum
+          npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
