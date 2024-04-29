@@ -6,6 +6,10 @@
     "type": "git",
     "url": "https://github.com/jcgotfredsen/components.git"
   },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/@jcgotfredsen",
+    "access": "public"
+  },
   "keywords": [
     "angular",
     "components"
